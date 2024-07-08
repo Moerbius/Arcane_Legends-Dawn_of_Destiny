@@ -1,1 +1,2 @@
-# Arcane_Legends-Dawn_of_Destiny
+# Arcane Legends - Dawn of Destiny
+
