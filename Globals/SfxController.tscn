@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cp6a55xu3buo6"]
+
+[ext_resource type="Script" path="res://Globals/SfxController.gd" id="1_m1uwd"]
+
+[node name="SfxController" type="Node2D"]
+script = ExtResource("1_m1uwd")
+
+[node name="StreamWalk" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
