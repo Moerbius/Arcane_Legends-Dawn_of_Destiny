@@ -1,7 +1,10 @@
 extends CharacterBody2D
 
 @export var speed = 150  # speed in pixels/sec
+@export var showActionKey: bool = false
+
 @onready var player = $LPCAnimatedSprite2D as LPCAnimatedSprite2D
+@onready var actionKeyAnim = $ActionKeyAnimation
 
 var lastAnimation: String
 var currentAnimation: String
@@ -28,6 +31,12 @@ func _physics_process(_delta):
 	else:
 		playAnimation("IDLE")
 	
+	if(showActionKey):
+		actionKeyAnim.show()
+		actionKeyAnim.play("default")
+	else:
+		actionKeyAnim.hide()
+		actionKeyAnim.stop()
 
 	
 func playAnimation(name: String):
@@ -68,3 +77,15 @@ func playAnimation(name: String):
 			player.play(LPCAnimatedSprite2D.LPCAnimation.IDLE_UP)
 		
 		
+
+
+func _on_np_cdetector_body_entered(body):
+	if(body.name == "NPC"):
+		showActionKey = true
+	#else:
+	#	showActionKey = false
+
+
+func _on_np_cdetector_body_exited(body):
+	if(body.name == "NPC"):
+		showActionKey = false

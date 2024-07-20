@@ -6,16 +6,15 @@
 [node name="ButtonOptions" type="TextureButton"]
 offset_right = 96.0
 offset_bottom = 32.0
-scale = Vector2(2, 2)
 texture_normal = ExtResource("1_7wwdy")
 script = ExtResource("2_0kjvl")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
 offset_left = 31.0
-offset_top = 3.0
+offset_top = 4.0
 offset_right = 86.0
-offset_bottom = 26.0
+offset_bottom = 27.0
 text = "Label"
 horizontal_alignment = 1
 vertical_alignment = 1
