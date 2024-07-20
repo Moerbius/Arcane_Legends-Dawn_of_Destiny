@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkuers62v70v3"]
+
+[ext_resource type="Texture2D" uid="uid://cfl3nmlnss3og" path="res://Assets/UI/button_options.png" id="1_7wwdy"]
+[ext_resource type="Script" path="res://Scripts/UI/Button.gd" id="2_0kjvl"]
+
+[node name="ButtonOptions" type="TextureButton"]
+offset_right = 96.0
+offset_bottom = 32.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("1_7wwdy")
+script = ExtResource("2_0kjvl")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 3.0
+offset_right = 86.0
+offset_bottom = 26.0
+text = "Label"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

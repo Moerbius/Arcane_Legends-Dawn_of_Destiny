@@ -1,15 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://cponeqqqnxixi"]
+[gd_scene load_steps=9 format=3 uid="uid://cponeqqqnxixi"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_ht33u"]
+[ext_resource type="Texture2D" uid="uid://bcngeaombds2l" path="res://Assets/Hills Free (update 3.0).png" id="2_x78dd"]
 [ext_resource type="FontFile" uid="uid://xakow8xqth7t" path="res://Fonts/8bitlimo.ttf" id="3_aymo3"]
+[ext_resource type="PackedScene" uid="uid://d0u50ii53jiw0" path="res://Scenes/UI/ButtonPlay.tscn" id="4_owyk7"]
+[ext_resource type="PackedScene" uid="uid://bkuers62v70v3" path="res://Scenes/UI/ButtonOptions.tscn" id="5_kbuk1"]
+[ext_resource type="PackedScene" uid="uid://dq1hg5uhssrw5" path="res://Scenes/UI/ButtonQuit.tscn" id="6_7sxda"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6qpti"]
 font = ExtResource("3_aymo3")
 font_size = 64
+font_color = Color(0.54902, 0.407843, 0.54902, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_np8mj"]
 font = ExtResource("3_aymo3")
 font_size = 32
+font_color = Color(0.54902, 0.407843, 0.54902, 1)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -20,7 +26,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ht33u")
 
-[node name="Label" type="Label" parent="."]
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_x78dd")
+
+[node name="ArcaneLegends" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -33,7 +48,7 @@ grow_horizontal = 2
 text = "ARCANE LEGENDS"
 label_settings = SubResource("LabelSettings_6qpti")
 
-[node name="Label2" type="Label" parent="."]
+[node name="DawnOfDestiny" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -62,19 +77,21 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
 
-[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="PlayButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("4_owyk7")]
 layout_mode = 2
-text = "Play"
+Text = "Play"
 
-[node name="Option" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="OptionsButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("5_kbuk1")]
 layout_mode = 2
-text = "Options"
+Text = "Options"
 
-[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="QuitButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("6_7sxda")]
 layout_mode = 2
-text = "Quit"
+Text = "Quit"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Option" to="." method="_on_option_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

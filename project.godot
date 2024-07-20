@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Arcane Legends - Dawn Of Destiny"
+config/version="1.0"
 run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
@@ -22,6 +23,7 @@ SfxController="*res://Globals/SfxController.tscn"
 
 [display]
 
+window/size/mode=3
 window/size/resizable=false
 
 [editor_plugins]
@@ -66,4 +68,5 @@ Escape={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
