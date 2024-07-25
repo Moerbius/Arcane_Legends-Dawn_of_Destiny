@@ -1,0 +1,16 @@
+res://Scenes/NPC.tscn
+res://Scripts/UI/Button.gd
+res://Resources/house_interior.tres
+res://Scripts/NPC.gd
+res://Scenes/main_menu.tscn
+res://Scenes/main.tscn
+res://Globals/MusicController.tscn
+res://Globals/SfxController.tscn
+res://Scenes/Hero.tscn
+res://Scenes/Inside/Inside1.tscn
+res://Scenes/UI/ButtonPlay.tscn
+res://Scenes/UI/ButtonOptions.tscn
+res://Scenes/UI/ButtonQuit.tscn
+res://Scripts/Hero.gd
+res://Scenes/Dungeon01.tscn
+res://default_bus_layout.tres
