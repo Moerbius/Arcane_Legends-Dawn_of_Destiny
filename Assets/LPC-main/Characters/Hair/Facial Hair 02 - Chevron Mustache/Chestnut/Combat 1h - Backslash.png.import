@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://dajgi61n26wfs"
+path="res://.godot/imported/Combat 1h - Backslash.png-caeecad2e5e02e867cb89fb4b2c3bb65.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Assets/LPC-main/Characters/Hair/Facial Hair 02 - Chevron Mustache/Chestnut/Combat 1h - Backslash.png"
+dest_files=["res://.godot/imported/Combat 1h - Backslash.png-caeecad2e5e02e867cb89fb4b2c3bb65.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1

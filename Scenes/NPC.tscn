@@ -1,17 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://b7w8wwdm5myrw"]
+[gd_scene load_steps=27 format=3 uid="uid://b7w8wwdm5myrw"]
 
 [ext_resource type="Script" path="res://Scripts/NPC.gd" id="1_3sotl"]
-[ext_resource type="Script" path="res://addons/LPCAnimatedSprite/LPCAnimatedSprite2D.gd" id="2_xhd76"]
-[ext_resource type="Texture2D" uid="uid://yy0lniw4qtww" path="res://Assets/Download.png" id="3_dlb7d"]
 [ext_resource type="Texture2D" uid="uid://cppkl66eb88te" path="res://Assets/exclamation_mark_sheet.png" id="4_leh5f"]
-[ext_resource type="Script" path="res://addons/LPCAnimatedSprite/LPCSpriteSheet.gd" id="4_sr4ee"]
 [ext_resource type="Texture2D" uid="uid://cmkwdvo46y0vs" path="res://Assets/question_mark_sheet.png" id="6_2i2pc"]
-
-[sub_resource type="Resource" id="Resource_ltjul"]
-script = ExtResource("4_sr4ee")
-SpriteSheet = ExtResource("3_dlb7d")
-Name = ""
-SpriteType = 0
+[ext_resource type="Texture2D" uid="uid://b3tgf423yg8l7" path="res://Assets/LPC-main/Characters/Body/Body 02 - Masculine, Thin/Idle.png" id="7_ep3a4"]
+[ext_resource type="Texture2D" uid="uid://dxfmk767esliq" path="res://Assets/LPC-main/Characters/Head/Head 02 - Masculine/Idle.png" id="8_1vnv4"]
+[ext_resource type="Texture2D" uid="uid://bjf3gd8qbx0lk" path="res://Assets/LPC-main/Characters/Hair/Medium 02 - Curly/Brown/Idle.png" id="9_edd1v"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y0shd"]
 radius = 14.0
@@ -131,13 +125,118 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_8s7t8"]
+resource_name = "Idle South"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Body:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/Body:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [6, 7, 8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/Head:frame_coords")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprites/Head:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [6, 7, 8]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprites/Hair:frame_coords")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_avv8e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/Head:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/Hair:frame_coords")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oe2e2"]
+_data = {
+"Idle South": SubResource("Animation_8s7t8"),
+"RESET": SubResource("Animation_avv8e")
+}
+
 [node name="NPC" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_3sotl")
-
-[node name="LPCAnimatedSprite2D" type="Node2D" parent="."]
-script = ExtResource("2_xhd76")
-SpriteSheets = Array[ExtResource("4_sr4ee")]([SubResource("Resource_ltjul")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
@@ -152,3 +251,28 @@ frame_progress = 0.598936
 position = Vector2(0, -30)
 sprite_frames = SubResource("SpriteFrames_ileix")
 frame_progress = 0.193086
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_oe2e2")
+}
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="Body" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("7_ep3a4")
+hframes = 3
+vframes = 4
+frame = 6
+
+[node name="Head" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("8_1vnv4")
+hframes = 3
+vframes = 4
+frame = 6
+
+[node name="Hair" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("9_edd1v")
+hframes = 3
+vframes = 4
+frame = 6

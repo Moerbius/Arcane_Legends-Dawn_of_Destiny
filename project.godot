@@ -27,10 +27,6 @@ window/size/mode=3
 window/size/resizable=false
 window/stretch/mode="viewport"
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/LPCAnimatedSprite/plugin.cfg")
-
 [input]
 
 up={
