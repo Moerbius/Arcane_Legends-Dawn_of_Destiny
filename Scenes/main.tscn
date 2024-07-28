@@ -90,18 +90,18 @@ layer_0/tile_data = PackedInt32Array(-393223, 65536, 11, -327687, 131072, 6, -32
 
 [node name="NPC" parent="." instance=ExtResource("4_lb3pu")]
 position = Vector2(-26, -90)
-gender = 0
-BodyColor = 2
-HairType = 1
-HairColor = 1
+gender = 1
+BodyColor = "Tan"
+HairType = "Short 05 - Natural"
+HairColor = "Blonde"
 showExclamationMark = true
-
-[node name="Hero" parent="." instance=ExtResource("3_hilak")]
-position = Vector2(-27, -32)
 
 [node name="NPC2" parent="." instance=ExtResource("4_lb3pu")]
 position = Vector2(163, -117)
-gender = 2
-BodyColor = 3
-HairType = 1
-HairColor = 0
+BodyColor = "Ivory"
+HairType = "Short 02 - Parted"
+HairColor = "Blonde"
+showQuestionMark = true
+
+[node name="Hero" parent="." instance=ExtResource("3_hilak")]
+position = Vector2(-27, -32)

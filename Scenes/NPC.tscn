@@ -1,11 +1,11 @@
 [gd_scene load_steps=27 format=3 uid="uid://b7w8wwdm5myrw"]
 
 [ext_resource type="Script" path="res://Scripts/NPC.gd" id="1_3sotl"]
+[ext_resource type="Texture2D" uid="uid://c88j0agc0cy6f" path="res://Assets/LPC-main/Characters/Body/Body 02 - Masculine, Thin/Ivory/Idle.png" id="4_6srwc"]
 [ext_resource type="Texture2D" uid="uid://cppkl66eb88te" path="res://Assets/exclamation_mark_sheet.png" id="4_leh5f"]
+[ext_resource type="Texture2D" uid="uid://b7pmjb6k47q13" path="res://Assets/LPC-main/Characters/Head/Head 02 - Masculine/Ivory/Idle.png" id="5_rt1hu"]
 [ext_resource type="Texture2D" uid="uid://cmkwdvo46y0vs" path="res://Assets/question_mark_sheet.png" id="6_2i2pc"]
-[ext_resource type="Texture2D" uid="uid://b3tgf423yg8l7" path="res://Assets/LPC-main/Characters/Body/Body 02 - Masculine, Thin/Idle.png" id="7_ep3a4"]
-[ext_resource type="Texture2D" uid="uid://dxfmk767esliq" path="res://Assets/LPC-main/Characters/Head/Head 02 - Masculine/Idle.png" id="8_1vnv4"]
-[ext_resource type="Texture2D" uid="uid://bjf3gd8qbx0lk" path="res://Assets/LPC-main/Characters/Hair/Medium 02 - Curly/Brown/Idle.png" id="9_edd1v"]
+[ext_resource type="Texture2D" uid="uid://c7sfkojobascb" path="res://Assets/LPC-main/Characters/Hair/Medium 06 - Dreadlocks/Black/Idle.png" id="6_htgf4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y0shd"]
 radius = 14.0
@@ -127,6 +127,7 @@ animations = [{
 
 [sub_resource type="Animation" id="Animation_8s7t8"]
 resource_name = "Idle South"
+length = 0.6
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -234,23 +235,27 @@ _data = {
 "RESET": SubResource("Animation_avv8e")
 }
 
-[node name="NPC" type="CharacterBody2D"]
+[node name="NPC" type="CharacterBody2D" groups=["NPC"]]
 motion_mode = 1
 script = ExtResource("1_3sotl")
+gender = 0
+BodyColor = 4
+HairType = "Medium 06 - Dreadlocks"
+HairColor = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
 shape = SubResource("CapsuleShape2D_y0shd")
 
 [node name="ExclamationMark" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(0, -30)
 sprite_frames = SubResource("SpriteFrames_pjlhl")
-frame_progress = 0.598936
 
 [node name="QuestionMark" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(0, -30)
 sprite_frames = SubResource("SpriteFrames_ileix")
-frame_progress = 0.193086
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -260,19 +265,19 @@ libraries = {
 [node name="Sprites" type="Node2D" parent="."]
 
 [node name="Body" type="Sprite2D" parent="Sprites"]
-texture = ExtResource("7_ep3a4")
+texture = ExtResource("4_6srwc")
 hframes = 3
 vframes = 4
 frame = 6
 
 [node name="Head" type="Sprite2D" parent="Sprites"]
-texture = ExtResource("8_1vnv4")
+texture = ExtResource("5_rt1hu")
 hframes = 3
 vframes = 4
 frame = 6
 
 [node name="Hair" type="Sprite2D" parent="Sprites"]
-texture = ExtResource("9_edd1v")
+texture = ExtResource("6_htgf4")
 hframes = 3
 vframes = 4
 frame = 6

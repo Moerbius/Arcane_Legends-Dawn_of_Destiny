@@ -1,3 +1,4 @@
+#@tool
 extends CharacterBody2D
 
 @export var speed = 150  # speed in pixels/sec
@@ -41,12 +42,12 @@ extends CharacterBody2D
 @onready var feetWalkTexture: Texture = preload("res://Assets/LPC-main/Characters/Clothing/Masculine, Thin/Feet/Shoes 02 - Boots/Brown/Walk.png")
 
 ### LEFT HAND WEAPON Sprites
-@onready var leftHandIdleTexture: Texture = preload("res://Assets/LPC-main/Characters/Props/Shield 01 - Heater Shield/Wood/Oak/Combat 1h - Idle.png")
+@onready var leftHandIdleTexture: Texture # = preload("res://Assets/LPC-main/Characters/Props/Shield 01 - Heater Shield/Wood/Oak/Combat 1h - Idle.png")
 @onready var leftHandWalkTexture: Texture
 
 ### RIGHT HAND WEAPON Sprites
-@onready var rightHandIdleTexture: Texture = preload("res://Assets/LPC-main/Characters/Props/Sword 01 - Arming Sword/Steel/Combat 1h - Idle.png")
-@onready var rightHandWalkTexture: Texture
+@onready var rightHandIdleTexture: Texture # = preload("res://Assets/LPC-main/weapons-extended/longsword.png")
+@onready var rightHandWalkTexture: Texture # = preload("res://Assets/LPC-main/weapons-extended/longsword.png")
 
 @export var hasWeaponLeft: bool = true
 @export var hasWeaponRight: bool = true
@@ -99,15 +100,24 @@ func _physics_process(_delta):
 	else:
 		actionKeyAnim.hide()
 		actionKeyAnim.stop()
-
+	
+	if(Input.is_action_just_pressed("action")):
+		if(showActionKey):
+			print_debug("Action pressed OK")
+	
+	
+	
+	
+	
+	
 	
 func playAnimation(animName: String):
 	lastAnimation = currentAnimation
 	
 	if(animName == "WALK0"):
 		#player.play(LPCAnimatedSprite2D.LPCAnimation.WALK_RIGHT)
-		setupSprites("Walk West")
-		animations.play("Walk West")
+		setupSprites("Walk East")
+		animations.play("Walk East")
 		currentAnimation = "WALK_RIGHT"
 	elif(animName == "WALK1"):
 		#player.play(LPCAnimatedSprite2D.LPCAnimation.WALK_RIGHT)
@@ -165,12 +175,13 @@ func playAnimation(animName: String):
 
 
 func _on_np_cdetector_body_entered(body):
-	if(body.name == "NPC"):
-		showActionKey = true
+	if(body.is_in_group("NPC")):
+		if(body.canInteract):
+			showActionKey = true
 
 
 func _on_np_cdetector_body_exited(body):
-	if(body.name == "NPC"):
+	if(body.is_in_group("NPC")):
 		showActionKey = false
 
 func setupSprites(animName: String):
@@ -232,12 +243,3 @@ func setupSprites(animName: String):
 	
 	
 	
-	#if(animName == "Idle South"):
-	#	Head.hframes = 3
-	#	Head.vframes = 4
-	#	Hair.hframes = 3
-	#	Hair.vframes = 4
-	#elif(animName == "Walk South"):
-	#	Head.vframes = 4
-	#	Hair.hframes = 8
-	#	Hair.vframes = 4
