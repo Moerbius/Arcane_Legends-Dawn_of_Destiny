@@ -1,11 +1,8 @@
-[gd_scene load_steps=27 format=3 uid="uid://b7w8wwdm5myrw"]
+[gd_scene load_steps=24 format=3 uid="uid://b7w8wwdm5myrw"]
 
 [ext_resource type="Script" path="res://Scripts/NPC.gd" id="1_3sotl"]
-[ext_resource type="Texture2D" uid="uid://c88j0agc0cy6f" path="res://Assets/LPC-main/Characters/Body/Body 02 - Masculine, Thin/Ivory/Idle.png" id="4_6srwc"]
 [ext_resource type="Texture2D" uid="uid://cppkl66eb88te" path="res://Assets/exclamation_mark_sheet.png" id="4_leh5f"]
-[ext_resource type="Texture2D" uid="uid://b7pmjb6k47q13" path="res://Assets/LPC-main/Characters/Head/Head 02 - Masculine/Ivory/Idle.png" id="5_rt1hu"]
 [ext_resource type="Texture2D" uid="uid://cmkwdvo46y0vs" path="res://Assets/question_mark_sheet.png" id="6_2i2pc"]
-[ext_resource type="Texture2D" uid="uid://c7sfkojobascb" path="res://Assets/LPC-main/Characters/Hair/Medium 06 - Dreadlocks/Black/Idle.png" id="6_htgf4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y0shd"]
 radius = 14.0
@@ -239,9 +236,7 @@ _data = {
 motion_mode = 1
 script = ExtResource("1_3sotl")
 gender = 0
-BodyColor = 4
 HairType = "Medium 06 - Dreadlocks"
-HairColor = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
@@ -265,19 +260,16 @@ libraries = {
 [node name="Sprites" type="Node2D" parent="."]
 
 [node name="Body" type="Sprite2D" parent="Sprites"]
-texture = ExtResource("4_6srwc")
 hframes = 3
 vframes = 4
 frame = 6
 
 [node name="Head" type="Sprite2D" parent="Sprites"]
-texture = ExtResource("5_rt1hu")
 hframes = 3
 vframes = 4
 frame = 6
 
 [node name="Hair" type="Sprite2D" parent="Sprites"]
-texture = ExtResource("6_htgf4")
 hframes = 3
 vframes = 4
 frame = 6

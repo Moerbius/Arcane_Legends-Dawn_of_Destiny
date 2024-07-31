@@ -197,6 +197,11 @@ func setupSprites(animName: String):
 		LeftHand.texture = leftHandIdleTexture
 		RightHand.texture = rightHandIdleTexture
 		
+		Globals.HeroHeadTexture = Head.texture
+		Globals.HeroHairTexture = Hair.texture
+		Globals.HeroBodyTexture = Body.texture
+		Globals.HeroTorsoTexture = Torso.texture
+		
 		Head.hframes = 3
 		Head.vframes = 4
 		Hair.hframes = 3

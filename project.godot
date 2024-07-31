@@ -20,9 +20,13 @@ config/icon="res://icon.svg"
 
 MusicController="*res://Globals/MusicController.tscn"
 SfxController="*res://Globals/SfxController.tscn"
+Globals="*res://Scripts/Globals.gd"
+Dices="*res://Scripts/dices.gd"
+Weapon="*res://Scripts/Weapon.gd"
 
 [display]
 
+window/size/mode=3
 window/size/resizable=false
 window/stretch/mode="viewport"
 
