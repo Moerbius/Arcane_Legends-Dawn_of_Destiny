@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://delwg3muxydks"]
+[gd_scene load_steps=15 format=3 uid="uid://delwg3muxydks"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Portrait.gd" id="1_2nmn2"]
 [ext_resource type="Texture2D" uid="uid://bjr2dn2oq7i0v" path="res://Assets/UI/PortraitFrameBG.png" id="1_4fsab"]
 [ext_resource type="Texture2D" uid="uid://dbvxlogmexhy4" path="res://Assets/LPC-main/Characters/Head/Head 02 - Masculine/Peach/Idle.png" id="1_5cley"]
 [ext_resource type="Texture2D" uid="uid://cfoty6i8l5wc3" path="res://Assets/button_body.png" id="2_4gj5s"]
 [ext_resource type="Texture2D" uid="uid://hu2i57s6xh37" path="res://Assets/LPC-main/Characters/Body/Body 02 - Masculine, Thin/Peach/Idle.png" id="2_c02am"]
+[ext_resource type="Texture2D" uid="uid://dsp62bafhq5og" path="res://Assets/UI/HealthBarMiddle.png" id="2_iqlrn"]
 [ext_resource type="FontFile" uid="uid://dgaxsi4lq45qa" path="res://Fonts/Alkhemikal.ttf" id="3_5mie6"]
 [ext_resource type="Texture2D" uid="uid://df8o2mlexxuoc" path="res://Assets/UI/PortraitFrame.png" id="4_igke7"]
 [ext_resource type="Texture2D" uid="uid://c1oteoity1mvi" path="res://Assets/LPC-main/Characters/Hair/Medium 01 - Page/Black/Idle.png" id="4_x0n6g"]
@@ -132,6 +133,15 @@ script = ExtResource("1_2nmn2")
 libraries = {
 "": SubResource("AnimationLibrary_jfm55")
 }
+
+[node name="ProgressBar" type="TextureProgressBar" parent="."]
+offset_left = 20.0
+offset_top = 7.0
+offset_right = 80.0
+offset_bottom = 15.0
+value = 100.0
+nine_patch_stretch = true
+texture_progress = ExtResource("2_iqlrn")
 
 [node name="NameFrame" type="Sprite2D" parent="."]
 position = Vector2(55, -5)
