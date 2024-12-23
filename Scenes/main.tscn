@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://c6lxgh7ed6w7l"]
+[gd_scene load_steps=9 format=3 uid="uid://c6lxgh7ed6w7l"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_vmfb1"]
 [ext_resource type="Texture2D" uid="uid://dosly3t2hshnp" path="res://Assets/grass.png" id="2_o3y83"]
 [ext_resource type="PackedScene" uid="uid://delwg3muxydks" path="res://Scenes/UI/Portrait.tscn" id="3_eeao8"]
 [ext_resource type="PackedScene" uid="uid://dlf26kr25o06v" path="res://Scenes/Hero.tscn" id="3_hilak"]
 [ext_resource type="PackedScene" uid="uid://b7w8wwdm5myrw" path="res://Scenes/NPC.tscn" id="4_lb3pu"]
+[ext_resource type="PackedScene" uid="uid://pxgmeo35f1s7" path="res://Scenes/FarmAnimals/Sheep.tscn" id="6_wpf3v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u7r64"]
 texture = ExtResource("2_o3y83")
@@ -116,3 +117,6 @@ showQuestionMark = true
 
 [node name="Hero" parent="." instance=ExtResource("3_hilak")]
 position = Vector2(82, 37)
+
+[node name="Sheep" parent="." instance=ExtResource("6_wpf3v")]
+position = Vector2(152, 75)
