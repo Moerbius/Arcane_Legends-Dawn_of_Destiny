@@ -21,6 +21,8 @@ signal started
 signal updated
 ## Emitted by default when [method complete] gets called.
 signal completed
+## Emitted by default when [objective_completed] gets set.
+signal objective_status_updated(value: bool)
 
 ## Whether the objective is fulfilled or not.[br]
 ## Must be set to true to be able to complete the quest;[br]
@@ -28,18 +30,19 @@ signal completed
 var objective_completed: bool = false:
 	set(value):
 		objective_completed = value
+		objective_status_updated.emit(value)
 	get:
 		return objective_completed
 
 
-## Gets called after QuesySystem' [method update_quest] method.[br][br]
+## Gets called after QuestSystem' [method update_quest] method.[br][br]
 ##
 ## By default, it emits the [signal updated] signal.
 func update(_args: Dictionary = {}) -> void:
 	updated.emit()
 
 
-## Gets called after QuesySystem' [method start_quest] method.[br]
+## Gets called after QuestSystem' [method start_quest] method.[br]
 ## Additional data may be passed from the optional [param _args] parameter.[br][br]
 ##
 ## By default, it emits the [signal started] signal.
@@ -47,7 +50,7 @@ func start(_args: Dictionary = {}) -> void:
 	started.emit()
 
 
-## Gets called after QuesySystem' [method complete_quest] method.[br]
+## Gets called after QuestSystem' [method complete_quest] method.[br]
 ## Make sure to set [member objective_completed] to true or disable its requirement in ProjectSettings,[br]
 ## or this method won't be called.[br][br]
 ##

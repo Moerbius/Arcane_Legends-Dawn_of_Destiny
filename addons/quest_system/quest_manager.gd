@@ -1,4 +1,5 @@
 extends Node
+class_name QuestSystemManagerAPI
 
 signal quest_accepted(quest: Quest) # Emitted when a quest gets moved to the ActivePool
 signal quest_completed(quest: Quest) # Emitted when a quest gets moved to the CompletedPool
@@ -18,12 +19,15 @@ func _init() -> void:
 	# Ovverride default pools if specified in project settings.
 	if available.get_script().resource_path != QuestSystemSettings.get_config_setting("available_quest_pool_path", available.get_script().resource_path):
 		var pool := load(QuestSystemSettings.get_config_setting("available_quest_pool_path"))
+		available.queue_free()
 		available = pool.new("Available")
 	if active.get_script().resource_path != QuestSystemSettings.get_config_setting("active_quest_pool_path", active.get_script().resource_path):
 		var pool := load(QuestSystemSettings.get_config_setting("active_quest_pool_path"))
+		active.queue_free()
 		active = pool.new("Active")
 	if completed.get_script().resource_path != QuestSystemSettings.get_config_setting("completed_quest_pool_path", completed.get_script().resource_path):
 		var pool := load(QuestSystemSettings.get_config_setting("completed_quest_pool_path"))
+		completed.queue_free()
 		completed = pool.new("Completed")
 
 	add_child(available)
@@ -34,15 +38,20 @@ func _init() -> void:
 		var pool_name: String = pool_path.get_file().split(".")[0].to_pascal_case()
 		add_new_pool(pool_path, pool_name)
 
-# Quest API
 
+func _exit_tree() -> void:
+	for pool in get_all_pools():
+		pool.reset()
+		pool.queue_free()
+
+#region: Quest API
 
 func start_quest(quest: Quest, args: Dictionary = {}) -> Quest:
 	assert(quest != null)
 
 	if active.is_quest_inside(quest):
 		return quest
-	if completed.is_quest_inside(quest): #Throw an error?
+	if completed.is_quest_inside(quest) or QuestSystemSettings.get_config_setting("allow_repeating_completed_quests", false):
 		return quest
 
 	#Add the quest to the actives quests
@@ -98,14 +107,14 @@ func mark_quest_as_available(quest: Quest) -> void:
 
 
 func get_available_quests() -> Array[Quest]:
-	return available.quests
+	return available.get_all_quests()
 
 func get_active_quests() -> Array[Quest]:
-	return active.quests
+	return active.get_all_quests()
 
 
 func is_quest_available(quest: Quest) -> bool:
-	if not (active.is_quest_inside(quest) or completed.is_quest_inside(quest)):
+	if available.is_quest_inside(quest):
 		return true
 	return false
 
@@ -121,7 +130,7 @@ func is_quest_completed(quest: Quest) -> bool:
 
 func is_quest_in_pool(quest: Quest, pool_name: String) -> bool:
 	if pool_name.is_empty():
-		for pool in get_children():
+		for pool in get_all_pools():
 			if pool.is_quest_inside(quest): return true
 		return false
 
@@ -131,13 +140,8 @@ func is_quest_in_pool(quest: Quest, pool_name: String) -> bool:
 
 
 func call_quest_method(quest_id: int, method: String, args: Array) -> void:
-	var quest: Quest = null
-
 	# Find the quest if present
-	for pools in get_children():
-		if pools.get_quest_from_id(quest_id) != null:
-			quest = pools.get_quest_from_id(quest_id)
-			break
+	var quest: Quest = _get_quest_by_id(quest_id)
 
 	# Make sure we've got the quest
 	if quest == null: return
@@ -147,19 +151,32 @@ func call_quest_method(quest_id: int, method: String, args: Array) -> void:
 
 
 func set_quest_property(quest_id: int, property: String, value: Variant) -> void:
-	var quest: Quest = null
-
 	# Find the quest
-	for pools in get_all_pools():
-		if pools.get_quest_from_id(quest_id) != null:
-			quest = pools.get_quest_from_id(quest_id)
+	var quest: Quest = _get_quest_by_id(quest_id)
 
 	if quest == null: return
 
 	# Now check if the quest has the property
+	if not _quest_has_property(quest, property): return
 
-	# First if the property is null -> we return
-	if property == null: return
+	# Finally we set the value
+	quest.set(property, value)
+
+func get_quest_property(quest_id: int, property: String) -> Variant:
+	# Find the quest
+	var quest: Quest = _get_quest_by_id(quest_id)
+
+	if quest == null: return null
+
+	# Now check if the quest has the property
+	if not _quest_has_property(quest, property): return null
+
+	# Finally we get the value
+	return quest.get(property)
+
+func _quest_has_property(quest: Quest, property: String) -> bool:
+	# If the property is null -> we return
+	if property == null: return false
 
 	var was_property_found: bool = false
 	# Then we check if the property is present
@@ -168,12 +185,20 @@ func set_quest_property(quest_id: int, property: String, value: Variant) -> void
 			was_property_found = true
 			break
 
-	# Return if the property was not found
-	if not was_property_found: return
+	return was_property_found
 
-	# Finally we set the value
-	quest.set(property, value)
+func _get_quest_by_id(quest_id: int) -> Quest:
+	var quest: Quest = null
 
+	# Find the quest
+	for pools in get_all_pools():
+		if pools.get_quest_from_id(quest_id) != null:
+			quest = pools.get_quest_from_id(quest_id)
+			break
+
+	return quest
+
+#endregion
 #region: Manager API
 
 func add_new_pool(pool_path: String, pool_name: String) -> void:
@@ -183,11 +208,17 @@ func add_new_pool(pool_path: String, pool_name: String) -> void:
 	var pool_instance = pool.new(pool_name)
 
 	# Make sure the pool does not exist yet
-	for pools in get_children():
-		if pool_instance.get_script() == pools.get_script():
+	for pools in get_all_pools():
+		if pool_instance.get_script() == pools.get_script() && pool_name != pools.name:
 			return
 
-	add_child(pool_instance)
+	add_child(pool_instance, true)
+
+
+func remove_pool(pool_name: String) -> void:
+	var pool := get_pool(pool_name)
+	if pool != null:
+		pool.queue_free()
 
 
 func get_pool(pool: String) -> BaseQuestPool:
@@ -216,7 +247,7 @@ func move_quest_to_pool(quest: Quest, old_pool: String, new_pool: String) -> Que
 	return quest
 
 
-func reset_pool(pool_name: String) -> void:
+func reset_pool(pool_name: String = "") -> void:
 	if pool_name.is_empty():
 		for pool in get_children():
 			pool.reset()

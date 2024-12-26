@@ -23,7 +23,6 @@ SfxController="*res://Globals/SfxController.tscn"
 Globals="*res://Scripts/Globals.gd"
 Dices="*res://Scripts/dices.gd"
 Weapon="*res://Scripts/Weapon.gd"
-QuestSystem="*res://addons/quest_system/quest_manager.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]
