@@ -6,7 +6,11 @@ extends Node
 @export var HeroHitPoints: int = 6
 @export var HeroXP: int
 
-@export var HeroHeadTexture: Texture
-@export var HeroHairTexture: Texture
-@export var HeroBodyTexture: Texture
-@export var HeroTorsoTexture: Texture
+@export var HeroTexture: Texture
+
+func _process(_delta) -> void:
+	# TODO: if on game, show main menu. If on title screen, quits game
+	if Input.is_action_just_pressed("escape"):
+		print("ESC key pressed")
+		print("Quitting...")
+		get_tree().quit(0)

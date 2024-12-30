@@ -23,6 +23,7 @@ SfxController="*res://Globals/SfxController.tscn"
 Globals="*res://Scripts/Globals.gd"
 Dices="*res://Scripts/dices.gd"
 Weapon="*res://Scripts/Weapon.gd"
+QuestSystem="*res://addons/quest_system/quest_manager.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]
@@ -32,7 +33,6 @@ directories/dtl_directory={}
 
 [display]
 
-window/size/mode=3
 window/size/resizable=false
 window/stretch/mode="viewport"
 
@@ -98,3 +98,4 @@ limits/message_queue/max_size_mb=64
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+viewport/transparent_background=true
