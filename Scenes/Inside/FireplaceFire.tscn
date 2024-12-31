@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8f00nvj12io7"]
+
+[ext_resource type="Script" path="res://Scripts/fireplace_fire.gd" id="1_j2rns"]
+[ext_resource type="Texture2D" uid="uid://dgelaca4bxugn" path="res://Assets/houseInteriors/fire.png" id="2_du8s0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x4g4y"]
+atlas = ExtResource("2_du8s0")
+region = Rect2(192, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uk8oy"]
+atlas = ExtResource("2_du8s0")
+region = Rect2(224, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ah5bf"]
+atlas = ExtResource("2_du8s0")
+region = Rect2(256, 0, 32, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6i7cn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x4g4y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uk8oy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ah5bf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="FireplaceFIre" type="Node2D"]
+script = ExtResource("1_j2rns")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6i7cn")
+frame_progress = 0.200451

@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://qd6y66b8bkyl"]
+
+[ext_resource type="Texture2D" uid="uid://dgelaca4bxugn" path="res://Assets/houseInteriors/fire.png" id="1_rabo0"]
+[ext_resource type="Script" path="res://Scripts/stove.gd" id="1_wiybb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4hko"]
+atlas = ExtResource("1_rabo0")
+region = Rect2(96, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujpxv"]
+atlas = ExtResource("1_rabo0")
+region = Rect2(128, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aicw3"]
+atlas = ExtResource("1_rabo0")
+region = Rect2(160, 256, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7b11b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4hko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujpxv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aicw3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oaony"]
+size = Vector2(32, 27)
+
+[node name="Stove" type="RigidBody2D"]
+mass = 0.001
+freeze = true
+script = ExtResource("1_wiybb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7b11b")
+frame_progress = 0.119891
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_oaony")

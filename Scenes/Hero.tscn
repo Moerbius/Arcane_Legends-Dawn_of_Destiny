@@ -1,10 +1,14 @@
-[gd_scene load_steps=24 format=3 uid="uid://dlf26kr25o06v"]
+[gd_scene load_steps=25 format=3 uid="uid://dlf26kr25o06v"]
 
 [ext_resource type="Script" path="res://Scripts/Hero.gd" id="1_v7aj3"]
 [ext_resource type="Texture2D" uid="uid://bcaeflgcqxyu1" path="res://Assets/hero/hero.png" id="3_te37k"]
 [ext_resource type="Texture2D" uid="uid://d2b3b1ogg5v3v" path="res://Assets/key_E_sprite.png" id="5_17qpe"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hxsvq"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pufwv"]
+size = Vector2(12, 8)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hk8gq"]
+radius = 4.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g8rkj"]
 atlas = ExtResource("5_17qpe")
@@ -250,11 +254,18 @@ rotation_smoothing_enabled = true
 rotation_smoothing_speed = 4.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 12)
-shape = SubResource("CircleShape2D_hxsvq")
+position = Vector2(0, 26)
+shape = SubResource("RectangleShape2D_pufwv")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-6, 26)
+shape = SubResource("CircleShape2D_hk8gq")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(6, 26)
+shape = SubResource("CircleShape2D_hk8gq")
 
 [node name="ActionKeyAnimation" type="AnimatedSprite2D" parent="."]
-visible = false
 position = Vector2(25, -20)
 sprite_frames = SubResource("SpriteFrames_341h6")
 
