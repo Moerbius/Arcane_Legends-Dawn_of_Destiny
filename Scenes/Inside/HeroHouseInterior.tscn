@@ -4115,7 +4115,7 @@ position = Vector2(210, -103)
 position = Vector2(-16, -44)
 
 [node name="Hero" parent="." instance=ExtResource("10_a2wu4")]
-position = Vector2(-5, -201)
+position = Vector2(131, -220)
 textureType = 0
 
 [node name="Shadows" type="TileMapLayer" parent="."]

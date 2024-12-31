@@ -4,9 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://cppkl66eb88te" path="res://Assets/exclamation_mark_sheet.png" id="4_leh5f"]
 [ext_resource type="Texture2D" uid="uid://cmkwdvo46y0vs" path="res://Assets/question_mark_sheet.png" id="6_2i2pc"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y0shd"]
-radius = 14.0
-height = 50.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_gwhkq"]
+radius = 4.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2b7y8"]
 atlas = ExtResource("4_leh5f")
@@ -165,9 +164,13 @@ _data = {
 motion_mode = 1
 script = ExtResource("1_3sotl")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5)
-shape = SubResource("CapsuleShape2D_y0shd")
+[node name="CollisionShape2DLeft" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 29)
+shape = SubResource("CircleShape2D_gwhkq")
+
+[node name="CollisionShape2D2Right" type="CollisionShape2D" parent="."]
+position = Vector2(3, 29)
+shape = SubResource("CircleShape2D_gwhkq")
 
 [node name="ExclamationMark" type="AnimatedSprite2D" parent="."]
 visible = false
