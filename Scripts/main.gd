@@ -1,7 +1,10 @@
 extends Node2D
 
+@onready var hero = $YSort/Hero
+
 func _ready():
-	pass
+	if Globals.HeroExitedHouse:
+		hero.position = Globals.HeroLastPosition
 
 func _process(_delta):
 	pass

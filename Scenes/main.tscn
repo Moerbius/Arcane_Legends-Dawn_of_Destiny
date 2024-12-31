@@ -102,15 +102,18 @@ offset_bottom = 65.0
 
 [node name="Portrait" parent="PanelContainer/MarginContainer" instance=ExtResource("3_eeao8")]
 
-[node name="HeroHouse" parent="." instance=ExtResource("7_hnuwg")]
-position = Vector2(423, -7)
-
 [node name="NPC" parent="." instance=ExtResource("6_3o3xp")]
 position = Vector2(240, 76)
 texture = ExtResource("7_5l5k6")
 npcName = "Nubian"
 showExclamationMark = true
 
-[node name="Hero" parent="." instance=ExtResource("3_hilak")]
+[node name="YSort" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Hero" parent="YSort" instance=ExtResource("3_hilak")]
 position = Vector2(37, 43)
 textureType = 0
+
+[node name="HeroHouse" parent="YSort" instance=ExtResource("7_hnuwg")]
+position = Vector2(423, -7)

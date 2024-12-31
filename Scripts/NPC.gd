@@ -18,9 +18,9 @@ func _ready():
 	
 	sprite.texture = texture
 	
-	var genderString: String
+	#var genderString: String
 	#var bodyColorString: String
-	var headString: String
+	#var headString: String
 
 	if(showExclamationMark):
 		canInteract = true

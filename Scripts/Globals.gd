@@ -7,6 +7,8 @@ extends Node
 @export var HeroXP: int
 
 @export var HeroTexture: Texture
+@export var HeroLastPosition: Vector2
+@export var HeroExitedHouse: bool
 
 func _process(_delta) -> void:
 	# TODO: if on game, show main menu. If on title screen, quits game

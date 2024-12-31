@@ -1,32 +1,32 @@
 extends Node2D
 
-@onready var canEnter = false
-@onready var heroLastPosition: Vector2
+@onready var spawn = $HeroSpawn
+@onready var hero = $Hero
+@onready var canExit = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	hero.position = spawn.position;
 	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if(canEnter):
+	if(canExit):
 		if Input.is_action_just_pressed("action"):
 			print("ACTION")
-			canEnter = false
-			Globals.HeroLastPosition = heroLastPosition
-			get_tree().change_scene_to_file("res://Scenes/Inside/HeroHouseInterior.tscn")
+			canExit = false
+			Globals.HeroExitedHouse = true
+			get_tree().change_scene_to_file("res://Scenes/main.tscn")
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("Hero")):
 		body.showActionKey = true
-		canEnter = true
-		heroLastPosition = body.position
-		
+		canExit = true
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
-	if canEnter:
+	if canExit:
 		body.showActionKey = false
-		canEnter = false
+		canExit = false
