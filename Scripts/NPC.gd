@@ -18,10 +18,6 @@ func _ready():
 	
 	sprite.texture = texture
 	
-	#var genderString: String
-	#var bodyColorString: String
-	#var headString: String
-
 	if(showExclamationMark):
 		canInteract = true
 		exclamationMark.play("default")
@@ -50,3 +46,15 @@ func _process(_delta):
 	else:
 		questionMark.stop()
 		questionMark.hide()
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if(body.is_in_group("Hero")):
+		print(body.name + " entered the area.")
+		body.showActionKey = true
+
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if(body.is_in_group("Hero")):
+		print(body.name + " exited the area.")
+		body.showActionKey = false

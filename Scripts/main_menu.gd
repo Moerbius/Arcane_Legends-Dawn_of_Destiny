@@ -12,7 +12,7 @@ func _process(_delta):
 	#print_debug(Dices.dice(2, 10))
 
 func _on_play_button_pressed():
-	get_tree().change_scene_to_file("res://Scenes/Inside/HeroHouse.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Inside/HeroHouseInterior.tscn")
 	MusicController.play_music(MusicController.Musics.TOWN)
 
 func _on_options_button_pressed():

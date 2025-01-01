@@ -54,6 +54,7 @@ func _physics_process(_delta):
 	if(Input.is_action_just_pressed("action")):
 		if(showActionKey):
 			print_debug("Action pressed OK")
+			Dialogic.start("teste")
 
 func playAnimation(animName: String):
 	lastAnimation = currentAnimation
@@ -118,15 +119,17 @@ func playAnimation(animName: String):
 		
 
 
-func _on_np_cdetector_body_entered(body):
-	if(body.is_in_group("NPC")):
-		if(body.canInteract):
-			showActionKey = true
+#func _on_np_cdetector_body_entered(body):
+	#pass
+	#if(body.is_in_group("NPC")):
+	#	if(body.canInteract):
+	#		showActionKey = true
 
 
-func _on_np_cdetector_body_exited(body):
-	if(body.is_in_group("NPC")):
-		showActionKey = false
+#func _on_np_cdetector_body_exited(body):
+	#pass
+	#if(body.is_in_group("NPC")):
+	#	showActionKey = false
 
 func setupSprites(animName: String):
 	var stance = animName.split(" ")

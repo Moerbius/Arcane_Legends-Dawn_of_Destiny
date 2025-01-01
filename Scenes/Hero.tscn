@@ -285,6 +285,3 @@ texture = ExtResource("3_te37k")
 hframes = 13
 vframes = 21
 frame = 105
-
-[connection signal="body_entered" from="NPCdetector" to="." method="_on_np_cdetector_body_entered"]
-[connection signal="body_exited" from="NPCdetector" to="." method="_on_np_cdetector_body_exited"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b7w8wwdm5myrw"]
+[gd_scene load_steps=25 format=3 uid="uid://b7w8wwdm5myrw"]
 
 [ext_resource type="Script" path="res://Scripts/NPC.gd" id="1_3sotl"]
 [ext_resource type="Texture2D" uid="uid://cppkl66eb88te" path="res://Assets/exclamation_mark_sheet.png" id="4_leh5f"]
@@ -160,6 +160,9 @@ _data = {
 "RESET": SubResource("Animation_avv8e")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wxy8v"]
+size = Vector2(24, 46)
+
 [node name="NPC" type="CharacterBody2D" groups=["NPC"]]
 motion_mode = 1
 script = ExtResource("1_3sotl")
@@ -191,3 +194,12 @@ libraries = {
 hframes = 13
 vframes = 21
 frame = 139
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="HeroDetector" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 20)
+shape = SubResource("RectangleShape2D_wxy8v")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
