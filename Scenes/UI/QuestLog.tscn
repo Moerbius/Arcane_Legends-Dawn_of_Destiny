@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://dx8fet35ep23u"]
+
+[ext_resource type="Texture2D" uid="uid://c6d5xii43g75u" path="res://Assets/UI/quest.png" id="1_bxfq2"]
+[ext_resource type="Script" path="res://Scripts/quest_log.gd" id="1_cc2ui"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gq846"]
+size = Vector2(180, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ddwc6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5npkn"]
+radius = 8.06226
+
+[node name="QuestLog" type="CharacterBody2D"]
+script = ExtResource("1_cc2ui")
+
+[node name="Quest" type="Sprite2D" parent="."]
+texture = ExtResource("1_bxfq2")
+
+[node name="Area2DDragg" type="Area2D" parent="."]
+position = Vector2(-4, -216)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DDragg"]
+position = Vector2(4, -1)
+shape = SubResource("RectangleShape2D_gq846")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-80, -101)
+shape = SubResource("RectangleShape2D_ddwc6")
+
+[node name="Area2DExit" type="Area2D" parent="."]
+position = Vector2(131, -207)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DExit"]
+shape = SubResource("CircleShape2D_5npkn")
+
+[connection signal="mouse_entered" from="Area2DDragg" to="." method="_on_area_2d_dragg_mouse_entered"]
+[connection signal="mouse_exited" from="Area2DDragg" to="." method="_on_area_2d_dragg_mouse_exited"]
+[connection signal="mouse_entered" from="Area2DExit" to="." method="_on_area_2d_exit_mouse_entered"]
+[connection signal="mouse_exited" from="Area2DExit" to="." method="_on_area_2d_exit_mouse_exited"]

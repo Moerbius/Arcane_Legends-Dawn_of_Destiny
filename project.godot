@@ -20,10 +20,11 @@ config/icon="res://icon.svg"
 
 MusicController="*res://Globals/MusicController.tscn"
 SfxController="*res://Globals/SfxController.tscn"
+Pandora="*res://addons/pandora/api.gd"
 Globals="*res://Scripts/Globals.gd"
+QuestSystem="*res://addons/quest_system/quest_manager.gd"
 Dices="*res://Scripts/dices.gd"
 Weapon="*res://Scripts/Weapon.gd"
-QuestSystem="*res://addons/quest_system/quest_manager.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]
@@ -56,12 +57,19 @@ glossary/default_case_sensitive=true
 
 [display]
 
+window/size/mode=3
 window/size/resizable=false
 window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/quest_system/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/pandora/plugin.cfg", "res://addons/quest_system/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://Quests/": "green"
+}
 
 [input]
 

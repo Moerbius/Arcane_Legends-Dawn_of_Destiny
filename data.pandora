@@ -1,0 +1,76 @@
+{
+	"_entity_data": {
+		"_categories": [
+			{
+				"_category_id": "",
+				"_generate_ids": true,
+				"_icon_color": "ffffff00",
+				"_icon_path": "res://addons/quest_system/assets/quest_resource.svg",
+				"_id": "3",
+				"_ids_generation_class": "PandoraQuests",
+				"_index": 1,
+				"_name": "Quests",
+				"_script_path": "res://models/quests.gd"
+			},
+			{
+				"_category_id": "",
+				"_generate_ids": true,
+				"_icon_color": "ffffff00",
+				"_id": "5",
+				"_ids_generation_class": "PandoraNpc",
+				"_index": 0,
+				"_name": "NPC",
+				"_script_path": "res://models/npc.gd"
+			}
+		],
+		"_entities": [
+			{
+				"_category_id": "3",
+				"_icon_color": "ffffffff",
+				"_id": "4",
+				"_index": 0,
+				"_name": "Welcome",
+				"_property_overrides": {
+					"Quest Resource": {
+						"type": "resource",
+						"value": "res://Quests/welcome.tres"
+					}
+				}
+			},
+			{
+				"_category_id": "5",
+				"_icon_color": "ffffff00",
+				"_id": "8",
+				"_index": 0,
+				"_name": "Lucy",
+				"_property_overrides": {
+					"Name": {
+						"type": "string",
+						"value": "Lucy"
+					}
+				}
+			}
+		],
+		"_properties": [
+			{
+				"_category_id": "3",
+				"_default_value": null,
+				"_id": "2",
+				"_name": "Quest Resource",
+				"_type": "resource"
+			},
+			{
+				"_category_id": "5",
+				"_default_value": "",
+				"_id": "7",
+				"_name": "Name",
+				"_type": "string"
+			}
+		]
+	},
+	"_id_generator": {
+		"_ids_by_context": {
+			"default": 8
+		}
+	}
+}

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://c6lxgh7ed6w7l"]
+[gd_scene load_steps=15 format=4 uid="uid://c6lxgh7ed6w7l"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_vmfb1"]
 [ext_resource type="Texture2D" uid="uid://dosly3t2hshnp" path="res://Assets/grass.png" id="2_o3y83"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bcaeflgcqxyu1" path="res://Assets/hero/hero.png" id="7_5l5k6"]
 [ext_resource type="PackedScene" uid="uid://1f3s8vad7unb" path="res://Scenes/HeroHouse.tscn" id="7_hnuwg"]
 [ext_resource type="PackedScene" uid="uid://crda5oa2wcvaw" path="res://Scenes/Fountain.tscn" id="9_0nsi3"]
+[ext_resource type="PackedScene" uid="uid://dx8fet35ep23u" path="res://Scenes/UI/QuestLog.tscn" id="10_nr6ij"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u7r64"]
 texture = ExtResource("2_o3y83")
@@ -178,7 +179,6 @@ tile_set = SubResource("TileSet_gtwef")
 [node name="Layer2" type="TileMapLayer" parent="."]
 
 [node name="PanelContainer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 offset_left = 25.0
@@ -187,6 +187,9 @@ offset_right = 65.0
 offset_bottom = 65.0
 
 [node name="Portrait" parent="PanelContainer/MarginContainer" instance=ExtResource("3_eeao8")]
+
+[node name="Node2D" parent="PanelContainer" instance=ExtResource("10_nr6ij")]
+position = Vector2(519, 231)
 
 [node name="YSort" type="Node2D" parent="."]
 y_sort_enabled = true
