@@ -54,7 +54,7 @@ func _physics_process(_delta):
 	if(Input.is_action_just_pressed("action")):
 		if(showActionKey):
 			print_debug("Action pressed OK")
-			Dialogic.start("teste")
+			#Dialogic.start("teste")
 
 func playAnimation(animName: String):
 	lastAnimation = currentAnimation

@@ -10,6 +10,9 @@ extends Node
 @export var HeroLastPosition: Vector2
 @export var HeroExitedHouse: bool
 
+@onready var QuestLog = $PanelContainer/MarginContainer2/QuestLog
+@onready var isQuestLogVisible: bool = false
+
 func _ready() -> void:
 	await get_tree().process_frame
 
@@ -19,6 +22,13 @@ func _process(_delta) -> void:
 		print("ESC key pressed")
 		print("Quitting...")
 		get_tree().quit(0)
+	elif Input.is_action_just_pressed("questlog"):
+		isQuestLogVisible = !isQuestLogVisible
+	
+	if(isQuestLogVisible):
+		QuestLog.visible = true
+	else:
+		QuestLog.visible = false
 
 func is_quest_active(_quest: String) -> bool:
 	assert(_quest is String)
