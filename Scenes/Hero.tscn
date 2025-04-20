@@ -1,7 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://dlf26kr25o06v"]
+[gd_scene load_steps=26 format=3 uid="uid://dlf26kr25o06v"]
 
-[ext_resource type="Script" path="res://Scripts/Hero.gd" id="1_v7aj3"]
+[ext_resource type="Script" uid="uid://b4n0g284gmwwm" path="res://Scripts/Hero.gd" id="1_v7aj3"]
 [ext_resource type="Texture2D" uid="uid://bcaeflgcqxyu1" path="res://Assets/hero/hero.png" id="3_te37k"]
+[ext_resource type="PackedScene" uid="uid://cxh6mjvcvt35o" path="res://Scenes/Globals.tscn" id="4_o40e8"]
 [ext_resource type="Texture2D" uid="uid://d2b3b1ogg5v3v" path="res://Assets/key_E_sprite.png" id="5_17qpe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pufwv"]
@@ -232,15 +233,15 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_35bbk"]
 _data = {
-"Idle East": SubResource("Animation_1luoq"),
-"Idle North": SubResource("Animation_64ex7"),
-"Idle South": SubResource("Animation_nv7dy"),
-"Idle West": SubResource("Animation_tao6d"),
-"RESET": SubResource("Animation_nbfit"),
-"Walk East": SubResource("Animation_ebmhk"),
-"Walk North": SubResource("Animation_427vr"),
-"Walk South": SubResource("Animation_adn7o"),
-"Walk West": SubResource("Animation_xnmv8")
+&"Idle East": SubResource("Animation_1luoq"),
+&"Idle North": SubResource("Animation_64ex7"),
+&"Idle South": SubResource("Animation_nv7dy"),
+&"Idle West": SubResource("Animation_tao6d"),
+&"RESET": SubResource("Animation_nbfit"),
+&"Walk East": SubResource("Animation_ebmhk"),
+&"Walk North": SubResource("Animation_427vr"),
+&"Walk South": SubResource("Animation_adn7o"),
+&"Walk West": SubResource("Animation_xnmv8")
 }
 
 [node name="Hero" type="CharacterBody2D" groups=["Hero"]]
@@ -277,7 +278,7 @@ shape = SubResource("CapsuleShape2D_l25q2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_35bbk")
+&"": SubResource("AnimationLibrary_35bbk")
 }
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -285,3 +286,5 @@ texture = ExtResource("3_te37k")
 hframes = 13
 vframes = 21
 frame = 105
+
+[node name="Globals" parent="." instance=ExtResource("4_o40e8")]

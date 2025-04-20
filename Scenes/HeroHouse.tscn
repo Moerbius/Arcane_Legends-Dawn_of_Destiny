@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=4 uid="uid://1f3s8vad7unb"]
 
-[ext_resource type="Script" path="res://Scripts/hero_house.gd" id="1_l8eap"]
+[ext_resource type="Script" uid="uid://bys1i7e61mfi1" path="res://Scripts/hero_house.gd" id="1_l8eap"]
 [ext_resource type="Texture2D" uid="uid://dj116hvr8xkd8" path="res://Assets/House/house.png" id="1_ydxb0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_53r58"]
@@ -874,7 +874,6 @@ sources/0 = SubResource("TileSetAtlasSource_dyu7d")
 size = Vector2(32, 31)
 
 [node name="HeroHouse" type="Node2D"]
-position = Vector2(0, 80)
 script = ExtResource("1_l8eap")
 
 [node name="Walls" type="TileMapLayer" parent="."]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://crda5oa2wcvaw"]
 
-[ext_resource type="Script" path="res://Scripts/fountain.gd" id="1_1bnag"]
+[ext_resource type="Script" uid="uid://c8tsaesoma24g" path="res://Scripts/fountain.gd" id="1_1bnag"]
 [ext_resource type="Texture2D" uid="uid://dprv8hk5o34ou" path="res://Assets/WaterFountain.png" id="1_baw32"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yyhrg"]

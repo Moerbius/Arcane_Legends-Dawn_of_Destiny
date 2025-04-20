@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cxh6mjvcvt35o"]
 
-[ext_resource type="Script" path="res://Scripts/Globals.gd" id="1_r70bw"]
+[ext_resource type="Script" uid="uid://duodj2ce0vqxa" path="res://Scripts/Globals.gd" id="1_r70bw"]
 [ext_resource type="PackedScene" uid="uid://delwg3muxydks" path="res://Scenes/UI/Portrait.tscn" id="2_ukpie"]
 [ext_resource type="PackedScene" uid="uid://dx8fet35ep23u" path="res://Scenes/UI/QuestLog.tscn" id="3_3j1d6"]
 
@@ -17,16 +17,8 @@ offset_bottom = 65.0
 
 [node name="Portrait" parent="PanelContainer/MarginContainer" instance=ExtResource("2_ukpie")]
 
-[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 40.0
-grow_horizontal = 0
-
-[node name="QuestLog" parent="PanelContainer/MarginContainer2" instance=ExtResource("3_3j1d6")]
-position = Vector2(-117, 248)
+[node name="QuestLog" parent="PanelContainer" instance=ExtResource("3_3j1d6")]
+position = Vector2(995, 248)
 motion_mode = 1
 
 [connection signal="ready" from="." to="." method="_on_ready"]

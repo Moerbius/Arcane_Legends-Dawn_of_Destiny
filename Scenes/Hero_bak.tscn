@@ -1,6 +1,6 @@
 [gd_scene load_steps=29 format=3 uid="uid://csn1s7oora720"]
 
-[ext_resource type="Script" path="res://Scripts/Hero.gd" id="1_hnhmk"]
+[ext_resource type="Script" uid="uid://b4n0g284gmwwm" path="res://Scripts/Hero.gd" id="1_hnhmk"]
 [ext_resource type="Texture2D" uid="uid://d2b3b1ogg5v3v" path="res://Assets/key_E_sprite.png" id="2_4mhio"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hxsvq"]
@@ -975,15 +975,15 @@ tracks/7/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_35bbk"]
 _data = {
-"Idle East": SubResource("Animation_1luoq"),
-"Idle North": SubResource("Animation_64ex7"),
-"Idle South": SubResource("Animation_nv7dy"),
-"Idle West": SubResource("Animation_tao6d"),
-"RESET": SubResource("Animation_nbfit"),
-"Walk East": SubResource("Animation_ebmhk"),
-"Walk North": SubResource("Animation_427vr"),
-"Walk South": SubResource("Animation_adn7o"),
-"Walk West": SubResource("Animation_xnmv8")
+&"Idle East": SubResource("Animation_1luoq"),
+&"Idle North": SubResource("Animation_64ex7"),
+&"Idle South": SubResource("Animation_nv7dy"),
+&"Idle West": SubResource("Animation_tao6d"),
+&"RESET": SubResource("Animation_nbfit"),
+&"Walk East": SubResource("Animation_ebmhk"),
+&"Walk North": SubResource("Animation_427vr"),
+&"Walk South": SubResource("Animation_adn7o"),
+&"Walk West": SubResource("Animation_xnmv8")
 }
 
 [sub_resource type="Resource" id="Resource_vgt3i"]

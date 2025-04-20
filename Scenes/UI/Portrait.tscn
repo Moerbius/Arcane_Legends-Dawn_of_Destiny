@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://delwg3muxydks"]
 
-[ext_resource type="Script" path="res://Scripts/UI/Portrait.gd" id="1_2nmn2"]
+[ext_resource type="Script" uid="uid://bwllg74cyrok6" path="res://Scripts/UI/Portrait.gd" id="1_2nmn2"]
 [ext_resource type="Texture2D" uid="uid://bjr2dn2oq7i0v" path="res://Assets/UI/PortraitFrameBG.png" id="1_4fsab"]
 [ext_resource type="Texture2D" uid="uid://cfoty6i8l5wc3" path="res://Assets/button_body.png" id="2_4gj5s"]
 [ext_resource type="Texture2D" uid="uid://dsp62bafhq5og" path="res://Assets/UI/HealthBarMiddle.png" id="2_iqlrn"]
@@ -55,8 +55,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jfm55"]
 _data = {
-"Idle": SubResource("Animation_r70mv"),
-"RESET": SubResource("Animation_dxact")
+&"Idle": SubResource("Animation_r70mv"),
+&"RESET": SubResource("Animation_dxact")
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_l0f3r"]

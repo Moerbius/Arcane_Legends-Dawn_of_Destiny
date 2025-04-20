@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://pxgmeo35f1s7"]
 
-[ext_resource type="Script" path="res://Scripts/Farm Animals/Sheep.gd" id="1_c5koq"]
+[ext_resource type="Script" uid="uid://qsgib1mlapbh" path="res://Scripts/Farm Animals/Sheep.gd" id="1_c5koq"]
 [ext_resource type="Texture2D" uid="uid://c3kdp6jybqyd1" path="res://Assets/FarmAnimals/sheep_eat.png" id="1_qdawy"]
 
 [sub_resource type="Animation" id="Animation_yygpe"]
@@ -122,13 +122,13 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_at3m8"]
 _data = {
-"Eat North": SubResource("Animation_yygpe"),
-"Eat West": SubResource("Animation_7ek1i"),
-"RESET": SubResource("Animation_2pp0j"),
-"Walk East": SubResource("Animation_0i4r6"),
-"Walk North": SubResource("Animation_ghyh7"),
-"Walk South": SubResource("Animation_r1g44"),
-"Walk West": SubResource("Animation_v8jec")
+&"Eat North": SubResource("Animation_yygpe"),
+&"Eat West": SubResource("Animation_7ek1i"),
+&"RESET": SubResource("Animation_2pp0j"),
+&"Walk East": SubResource("Animation_0i4r6"),
+&"Walk North": SubResource("Animation_ghyh7"),
+&"Walk South": SubResource("Animation_r1g44"),
+&"Walk West": SubResource("Animation_v8jec")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eynt2"]

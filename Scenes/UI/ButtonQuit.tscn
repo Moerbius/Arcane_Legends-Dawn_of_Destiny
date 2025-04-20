@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dq1hg5uhssrw5"]
 
 [ext_resource type="Texture2D" uid="uid://bkyft36kfd0yl" path="res://Assets/UI/button_quit.png" id="1_heinq"]
-[ext_resource type="Script" path="res://Scripts/UI/Button.gd" id="2_f2pyo"]
+[ext_resource type="Script" uid="uid://bfqcpdko56f14" path="res://Scripts/UI/Button.gd" id="2_f2pyo"]
 
 [node name="ButtonQuit" type="TextureButton"]
 offset_right = 96.0

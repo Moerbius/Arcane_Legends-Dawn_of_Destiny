@@ -10,7 +10,7 @@ extends Node
 @export var HeroLastPosition: Vector2
 @export var HeroExitedHouse: bool
 
-@onready var QuestLog = $PanelContainer/MarginContainer2/QuestLog
+@onready var QuestLog = $PanelContainer/QuestLog #$PanelContainer/MarginContainer/QuestLog
 @onready var isQuestLogVisible: bool = false
 
 func _ready() -> void:
@@ -26,9 +26,11 @@ func _process(_delta) -> void:
 		isQuestLogVisible = !isQuestLogVisible
 	
 	if(isQuestLogVisible):
-		QuestLog.visible = true
+		if(QuestLog != null):
+			QuestLog.visible = true
 	else:
-		QuestLog.visible = false
+		if(QuestLog != null):
+			QuestLog.visible = false
 
 func is_quest_active(_quest: String) -> bool:
 	assert(_quest is String)

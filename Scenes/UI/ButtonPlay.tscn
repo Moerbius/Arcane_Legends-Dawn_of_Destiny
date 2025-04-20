@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d0u50ii53jiw0"]
 
-[ext_resource type="Script" path="res://Scripts/UI/Button.gd" id="1_258oc"]
+[ext_resource type="Script" uid="uid://bfqcpdko56f14" path="res://Scripts/UI/Button.gd" id="1_258oc"]
 [ext_resource type="Texture2D" uid="uid://37h3oka3qec1" path="res://Assets/UI/button_play.png" id="5_kxorg"]
 
 [node name="ButtonPlay" type="TextureButton"]

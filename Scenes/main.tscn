@@ -1,9 +1,8 @@
-[gd_scene load_steps=14 format=4 uid="uid://c6lxgh7ed6w7l"]
+[gd_scene load_steps=13 format=4 uid="uid://c6lxgh7ed6w7l"]
 
-[ext_resource type="Script" path="res://Scripts/main.gd" id="1_vmfb1"]
+[ext_resource type="Script" uid="uid://cp2rfpphq1rd2" path="res://Scripts/main.gd" id="1_vmfb1"]
 [ext_resource type="Texture2D" uid="uid://dosly3t2hshnp" path="res://Assets/grass.png" id="2_o3y83"]
 [ext_resource type="Texture2D" uid="uid://nm4eo1skqa3p" path="res://Assets/dirt.png" id="3_bqjiq"]
-[ext_resource type="PackedScene" uid="uid://delwg3muxydks" path="res://Scenes/UI/Portrait.tscn" id="3_eeao8"]
 [ext_resource type="PackedScene" uid="uid://dlf26kr25o06v" path="res://Scenes/Hero.tscn" id="3_hilak"]
 [ext_resource type="PackedScene" uid="uid://b7w8wwdm5myrw" path="res://Scenes/NPC.tscn" id="6_3o3xp"]
 [ext_resource type="Texture2D" uid="uid://bcaeflgcqxyu1" path="res://Assets/hero/hero.png" id="7_5l5k6"]
@@ -163,7 +162,6 @@ texture = ExtResource("3_bqjiq")
 sources/0 = SubResource("TileSetAtlasSource_o4600")
 
 [node name="Node2D" type="Node2D"]
-position = Vector2(112, 107)
 script = ExtResource("1_vmfb1")
 
 [node name="Layer0" type="TileMapLayer" parent="."]
@@ -176,16 +174,6 @@ tile_map_data = PackedByteArray("AAD//wEAAAADAAoAAAD//wIAAAADAAoAAAAAAAEAAAAEAAo
 tile_set = SubResource("TileSet_gtwef")
 
 [node name="Layer2" type="TileMapLayer" parent="."]
-
-[node name="PanelContainer" type="CanvasLayer" parent="."]
-
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
-offset_left = 25.0
-offset_top = 25.0
-offset_right = 65.0
-offset_bottom = 65.0
-
-[node name="Portrait" parent="PanelContainer/MarginContainer" instance=ExtResource("3_eeao8")]
 
 [node name="YSort" type="Node2D" parent="."]
 y_sort_enabled = true

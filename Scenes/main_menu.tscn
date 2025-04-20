@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://cponeqqqnxixi"]
 
-[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_ht33u"]
+[ext_resource type="Script" uid="uid://62y01cdbbont" path="res://Scripts/main_menu.gd" id="1_ht33u"]
 [ext_resource type="Texture2D" uid="uid://bcngeaombds2l" path="res://Assets/Hills Free (update 3.0).png" id="2_x78dd"]
 [ext_resource type="FontFile" uid="uid://xakow8xqth7t" path="res://Fonts/8bitlimo.ttf" id="3_aymo3"]
 [ext_resource type="FontFile" uid="uid://dgaxsi4lq45qa" path="res://Fonts/Alkhemikal.ttf" id="3_g85mr"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=3 uid="uid://b7w8wwdm5myrw"]
 
-[ext_resource type="Script" path="res://Scripts/NPC.gd" id="1_3sotl"]
+[ext_resource type="Script" uid="uid://b4br7s0lsf3ye" path="res://Scripts/NPC.gd" id="1_3sotl"]
 [ext_resource type="Texture2D" uid="uid://cppkl66eb88te" path="res://Assets/exclamation_mark_sheet.png" id="4_leh5f"]
 [ext_resource type="Texture2D" uid="uid://cmkwdvo46y0vs" path="res://Assets/question_mark_sheet.png" id="6_2i2pc"]
 
@@ -156,8 +156,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oe2e2"]
 _data = {
-"Idle South": SubResource("Animation_8s7t8"),
-"RESET": SubResource("Animation_avv8e")
+&"Idle South": SubResource("Animation_8s7t8"),
+&"RESET": SubResource("Animation_avv8e")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wxy8v"]
@@ -187,7 +187,7 @@ sprite_frames = SubResource("SpriteFrames_ileix")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_oe2e2")
+&"": SubResource("AnimationLibrary_oe2e2")
 }
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

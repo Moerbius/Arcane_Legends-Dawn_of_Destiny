@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=4 uid="uid://dyailt5gi7ca8"]
 
-[ext_resource type="Script" path="res://Scripts/hero_house_interior.gd" id="1_kme7e"]
+[ext_resource type="Script" uid="uid://dr3bihdp7oybv" path="res://Scripts/hero_house_interior.gd" id="1_kme7e"]
 [ext_resource type="Texture2D" uid="uid://dy56a0r43hjl1" path="res://Assets/houseInteriors/Inside_A2.png" id="2_6360x"]
 [ext_resource type="Texture2D" uid="uid://b63w8qer2lbfq" path="res://Assets/houseInteriors/Inside_A4.png" id="3_qgxoa"]
 [ext_resource type="Texture2D" uid="uid://dvdtbryyj78h6" path="res://Assets/houseInteriors/Inside_B.png" id="4_v6ux0"]
