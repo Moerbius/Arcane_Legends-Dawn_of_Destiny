@@ -6,12 +6,10 @@
 [sub_resource type="Resource" id="Resource_gqeuv"]
 script = ExtResource("2_p5w8o")
 title = "quest step"
-completed = false
 
 [resource]
 script = ExtResource("1_rb871")
 steps = Array[ExtResource("2_p5w8o")]([SubResource("Resource_gqeuv")])
-id = 0
 quest_name = "Welcome"
 quest_description = "quest description"
 quest_objective = "quest objectives"
