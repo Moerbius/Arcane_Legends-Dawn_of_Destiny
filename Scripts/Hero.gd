@@ -17,44 +17,54 @@ extends CharacterBody2D
 
 var lastAnimation: String = "WALK_DOWN"
 var currentAnimation: String = "WALK_DOWN"
+var can_move: bool = true
 
 func _ready():
-	pass
+	Dialogic.timeline_started.connect(_on_dialogue_started)
+	Dialogic.timeline_ended.connect(_on_dialogue_ended)
 
 
 func _physics_process(_delta):
-	
+	if not can_move:
+		velocity = Vector2.ZERO
+		move_and_slide()
+		playAnimation("IDLE")
+		_update_action_prompt()
+		return
+
 	var direction = Input.get_vector("left", "right", "up", "down")
-	var isMoving: bool = false
-	velocity = direction * speed
-	velocity = velocity.normalized() * speed
-	
+	velocity = direction.normalized() * speed
+
 	var angle = direction.angle() / (PI/4)
 	angle = wrapi(int(angle), 0, 8)
-	
-	if(direction.x == 0 && direction.y == 0):
-		isMoving = false
-	else:
-		isMoving = true
-	
+
+	var isMoving: bool = direction != Vector2.ZERO
 	move_and_slide()
-	
-	if(isMoving):
+
+	if isMoving:
 		playAnimation("WALK" + str(angle))
 	else:
 		playAnimation("IDLE")
-	
-	if(showActionKey):
+
+	_update_action_prompt()
+
+
+func _update_action_prompt() -> void:
+	if showActionKey and can_move:
 		actionKeyAnim.show()
 		actionKeyAnim.play("default")
 	else:
 		actionKeyAnim.hide()
 		actionKeyAnim.stop()
-	
-	if(Input.is_action_just_pressed("action")):
-		if(showActionKey):
-			print_debug("Action pressed OK")
-			#Dialogic.start("teste")
+
+
+func _on_dialogue_started() -> void:
+	can_move = false
+	velocity = Vector2.ZERO
+
+
+func _on_dialogue_ended() -> void:
+	can_move = true
 
 func playAnimation(animName: String):
 	lastAnimation = currentAnimation

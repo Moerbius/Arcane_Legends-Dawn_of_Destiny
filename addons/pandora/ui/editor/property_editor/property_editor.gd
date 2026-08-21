@@ -21,7 +21,7 @@ var current_entity: PandoraEntity
 
 
 func _ready() -> void:
-	property_bar.property_added.connect(_add_property)
+	property_bar.property_added.connect(_add_property.bind(true))
 	set_entity(null)
 
 
@@ -50,15 +50,20 @@ func set_entity(entity: PandoraEntity) -> void:
 
 	if entity != null:
 		entity_attributes.init(entity)
+		property_bar.ensure_extensions_loaded()
 		var properties = entity.get_entity_properties()
 
 		for property in properties:
 			var scene = property_bar.get_scene_by_type(property.get_property_type().get_type_name())
+			if scene == null:
+				continue
 			var control = scene.instantiate() as PandoraPropertyControl
 			_add_property_control(control, property)
 
 
-func _add_property(scene: PackedScene) -> void:
+# The focus parameter is optional, and only used to ask the editor to also focus to the
+# specified property
+func _add_property(scene: PackedScene, focus: bool = false) -> void:
 	if not current_entity is PandoraCategory:
 		print("Cannot add custom properties to non-categories!")
 		return
@@ -69,10 +74,10 @@ func _add_property(scene: PackedScene) -> void:
 		control.type
 	)
 	if property != null:
-		_add_property_control(control, property)
+		_add_property_control(control, property, focus)
 
 
-func _add_property_control(control: PandoraPropertyControl, property: PandoraProperty) -> void:
+func _add_property_control(control: PandoraPropertyControl, property: PandoraProperty, focus: bool = false) -> void:
 	var control_kvp = PropertyControlKvp.instantiate()
 	control.init(property)
 	control_kvp.init(property, control, Pandora._entity_backend)
@@ -84,11 +89,12 @@ func _add_property_control(control: PandoraPropertyControl, property: PandoraPro
 	property_list.add_child(control_kvp)
 	control_kvp.property_key_edit.grab_focus()
 	control_kvp.original_property_selected.connect(property_settings_container.set_property)
-	await get_tree().process_frame
 	# First scroll to the control node and then apply an offset.
 	# It's important to wait a frame before scrolling as for the documentation.
-	scroll_container.ensure_control_visible(control_kvp)
-	scroll_container.scroll_vertical = scroll_container.scroll_vertical + 100
+	if focus:
+		await get_tree().process_frame
+		scroll_container.ensure_control_visible(control_kvp)
+		scroll_container.scroll_vertical = scroll_container.scroll_vertical + 100
 
 
 func _generate_property_name(type: String, entity: PandoraEntity) -> String:
@@ -97,3 +103,7 @@ func _generate_property_name(type: String, entity: PandoraEntity) -> String:
 	if properties.is_empty() or not entity.has_entity_property(property_name):
 		return property_name
 	return property_name + str(properties.size())
+
+
+func _on_update_extensions_configurations() -> void:
+	property_bar.updates_property_bar_buttons()

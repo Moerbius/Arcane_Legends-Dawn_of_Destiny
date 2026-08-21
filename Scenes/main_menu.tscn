@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cponeqqqnxixi"]
+[gd_scene format=3 uid="uid://cponeqqqnxixi"]
 
 [ext_resource type="Script" uid="uid://62y01cdbbont" path="res://Scripts/main_menu.gd" id="1_ht33u"]
 [ext_resource type="Texture2D" uid="uid://bcngeaombds2l" path="res://Assets/Hills Free (update 3.0).png" id="2_x78dd"]
@@ -21,7 +21,7 @@ font_color = Color(0.54902, 0.407843, 0.54902, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_6sr5r"]
 font = ExtResource("3_g85mr")
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" unique_id=1546220358]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,7 +30,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ht33u")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="." unique_id=119936635]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,7 +39,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_x78dd")
 
-[node name="ArcaneLegends" type="Label" parent="."]
+[node name="ArcaneLegends" type="Label" parent="." unique_id=915857507]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -52,7 +52,7 @@ grow_horizontal = 2
 text = "ARCANE LEGENDS"
 label_settings = SubResource("LabelSettings_6qpti")
 
-[node name="DawnOfDestiny" type="Label" parent="."]
+[node name="DawnOfDestiny" type="Label" parent="." unique_id=1908796568]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -65,7 +65,7 @@ grow_horizontal = 2
 text = "Dawn of Destiny"
 label_settings = SubResource("LabelSettings_np8mj")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=407718604]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -79,25 +79,25 @@ offset_bottom = 56.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=390253970]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 alignment = 1
 
-[node name="PlayButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("4_owyk7")]
+[node name="PlayButton" parent="MarginContainer/VBoxContainer" unique_id=1772416142 instance=ExtResource("4_owyk7")]
 layout_mode = 2
 Text = "Play"
 
-[node name="OptionsButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("5_kbuk1")]
+[node name="OptionsButton" parent="MarginContainer/VBoxContainer" unique_id=903702608 instance=ExtResource("5_kbuk1")]
 layout_mode = 2
 Text = "Options"
 
-[node name="QuitButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("6_7sxda")]
+[node name="QuitButton" parent="MarginContainer/VBoxContainer" unique_id=202957807 instance=ExtResource("6_7sxda")]
 layout_mode = 2
 Text = "Quit"
 
-[node name="Version" type="Label" parent="."]
+[node name="Version" type="Label" parent="." unique_id=695016955]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0

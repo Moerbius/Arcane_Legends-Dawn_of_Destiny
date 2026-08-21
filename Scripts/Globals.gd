@@ -1,42 +1,68 @@
 extends Node
 
+const MAIN_MENU_SCENE := "res://Scenes/main_menu.tscn"
+
 @export var HeroName: String = "Moerbius"
 @export var HeroMaxHitPoints: int = 12
-
 @export var HeroHitPoints: int = 6
 @export var HeroXP: int
-
 @export var HeroTexture: Texture
 @export var HeroLastPosition: Vector2
-@export var HeroExitedHouse: bool
+@export var HeroHasLastPosition: bool = false
 
-@onready var QuestLog = $PanelContainer/QuestLog #$PanelContainer/MarginContainer/QuestLog
-@onready var isQuestLogVisible: bool = false
+@onready var hud: CanvasLayer = $PanelContainer
+@onready var QuestLog = $PanelContainer/QuestLog
+
 
 func _ready() -> void:
-	await get_tree().process_frame
+	if QuestLog:
+		QuestLog.visible = false
+	set_hud_visible(false)
+
 
 func _process(_delta) -> void:
-	# TODO: if on game, show main menu. If on title screen, quits game
 	if Input.is_action_just_pressed("escape"):
-		print("ESC key pressed")
-		print("Quitting...")
-		get_tree().quit(0)
+		_handle_escape()
 	elif Input.is_action_just_pressed("questlog"):
-		isQuestLogVisible = !isQuestLogVisible
-	
-	if(isQuestLogVisible):
-		if(QuestLog != null):
-			QuestLog.visible = true
+		if hud and hud.visible and QuestLog:
+			QuestLog.visible = not QuestLog.visible
+
+
+func set_hud_visible(is_visible: bool) -> void:
+	if hud:
+		hud.visible = is_visible
+	if not is_visible and QuestLog:
+		QuestLog.visible = false
+
+
+func reset_session() -> void:
+	HeroHasLastPosition = false
+	HeroLastPosition = Vector2.ZERO
+	set_hud_visible(false)
+
+
+func save_outdoor_position(pos: Vector2) -> void:
+	HeroLastPosition = pos
+	HeroHasLastPosition = true
+
+
+func _handle_escape() -> void:
+	var current_scene := get_tree().current_scene
+	if current_scene == null:
+		return
+	if current_scene.scene_file_path == MAIN_MENU_SCENE:
+		get_tree().quit(0)
 	else:
-		if(QuestLog != null):
-			QuestLog.visible = false
+		set_hud_visible(false)
+		get_tree().change_scene_to_file(MAIN_MENU_SCENE)
+
 
 func is_quest_active(_quest: String) -> bool:
 	assert(_quest is String)
 	var pandora_quest: PandoraQuest = Pandora.get_entity(_quest) as PandoraQuest
 	assert(pandora_quest != null)
 	return QuestSystem.is_quest_active(pandora_quest.get_quest())
+
 
 func is_quest_completed(_quest: String) -> bool:
 	assert(_quest is String)

@@ -70,7 +70,8 @@
 	},
 	"_id_generator": {
 		"_ids_by_context": {
-			"default": 8
+			"default": 8.0
 		}
-	}
+	},
+	"_version": 1
 }

@@ -8,28 +8,34 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Arcane Legends - Dawn Of Destiny"
 config/version="1.0"
 run/main_scene="res://Scenes/main_menu.tscn"
-config/features=PackedStringArray("4.5", "Mobile")
+config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
 MusicController="*res://Globals/MusicController.tscn"
 SfxController="*res://Globals/SfxController.tscn"
-Pandora="*res://addons/pandora/api.gd"
-Globals="*res://Scripts/Globals.gd"
+Pandora="*uid://bqv713p4thrli"
+Globals="*res://Scenes/Globals.tscn"
 Dices="*res://Scripts/dices.gd"
 Weapon="*res://Scripts/Weapon.gd"
-QuestSystem="*res://addons/quest_system/quest_manager.gd"
-Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+QuestSystem="*uid://b77kvbliweux5"
+Dialogic="*uid://ds2q0uclmolvu"
 
 [dialogic]
 
-directories/dch_directory={}
+directories/dch_directory={
+"npc": "res://Dialogs/Characters/npc.dch"
+}
 directories/dtl_directory={
 "teste": "res://Dialogs/Timelines/teste.dtl"
 }
@@ -54,6 +60,22 @@ layout/style_list=[]
 layout/default_style="Default"
 variables={}
 glossary/default_case_sensitive=true
+layout/style_directory={}
+animations/cross_fade_default_length=0.5
+audio/channel_defaults={
+"": {
+"audio_bus": "",
+"fade_length": 0.0,
+"loop": false,
+"volume": 0.0
+},
+"music": {
+"audio_bus": "",
+"fade_length": 0.0,
+"loop": true,
+"volume": 0.0
+}
+}
 
 [display]
 
@@ -62,7 +84,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/copilot/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/quest_system/plugin.cfg")
+enabled=PackedStringArray("res://addons/copilot/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/pandora/plugin.cfg", "res://addons/quest_system/plugin.cfg")
 
 [file_customization]
 

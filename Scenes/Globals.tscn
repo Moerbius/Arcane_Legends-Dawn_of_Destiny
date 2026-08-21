@@ -8,6 +8,7 @@
 script = ExtResource("1_r70bw")
 
 [node name="PanelContainer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 offset_left = 25.0
@@ -18,7 +19,6 @@ offset_bottom = 65.0
 [node name="Portrait" parent="PanelContainer/MarginContainer" instance=ExtResource("2_ukpie")]
 
 [node name="QuestLog" parent="PanelContainer" instance=ExtResource("3_3j1d6")]
+visible = false
 position = Vector2(995, 248)
 motion_mode = 1
-
-[connection signal="ready" from="." to="." method="_on_ready"]

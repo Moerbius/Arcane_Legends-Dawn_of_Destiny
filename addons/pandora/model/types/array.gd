@@ -20,6 +20,9 @@ func _init() -> void:
 func is_valid(variant: Variant) -> bool:
 	return variant is Array
 
+func is_actual_type(variant: Variant) -> bool:
+	return variant is Array
+
 
 func get_merged_settings(property: PandoraProperty) -> Dictionary:
 	var merged_settings: Dictionary = _settings.duplicate()
@@ -46,8 +49,11 @@ func parse_value(variant: Variant, settings: Dictionary = {}) -> Variant:
 				if value is Dictionary and value.has("type") and value.has("value"):
 					var value_type = value["type"]
 					var dict_value = value["value"]
-
-					var type = PandoraPropertyType.lookup(value_type)
+					
+					var path = ""
+					if PandoraSettings.extensions_types.has(value_type):
+						path = PandoraSettings.extensions_types[value_type]
+					var type = PandoraPropertyType.lookup(value_type, path)
 					if type != null:
 						value = type.parse_value(dict_value)
 
@@ -82,9 +88,17 @@ func write_value(variant: Variant) -> Variant:
 			elif value is PandoraReference:
 				value_type = PandoraPropertyType.lookup("reference")
 				value = value.save_data()
+			elif PandoraSettings.compare_with_extensions_models(value):
+				var type_name = PandoraSettings.get_lookup_property_name(value)
+				# extensions_models keys have ".gd", extensions_types keys don't
+				if type_name.ends_with(".gd"):
+					type_name = type_name.left(type_name.length() - 3)
+				var path = PandoraSettings.extensions_types[type_name]
+				value_type = PandoraPropertyType.lookup(type_name, path)
+				value = value_type.write_value(value)
 			else:
 				for type in types:
-					if type.is_valid(value):
+					if type.is_actual_type(value):
 						value_type = type
 						value = type.write_value(value)
 						break

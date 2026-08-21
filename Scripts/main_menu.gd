@@ -3,15 +3,13 @@ extends Control
 @onready var labelVersion = $Version
 
 func _ready():
-	#await get_tree().process_frame
+	Globals.set_hud_visible(false)
 	MusicController.play_music(MusicController.Musics.MAIN)
 	labelVersion.text = "Version " + ProjectSettings.get_setting("application/config/version")
-	
-func _process(_delta):
-	pass
-	#print_debug(Dices.dice(2, 10))
+
 
 func _on_play_button_pressed():
+	Globals.reset_session()
 	get_tree().change_scene_to_file("res://Scenes/Inside/HeroHouseInterior.tscn")
 	MusicController.play_music(MusicController.Musics.TOWN)
 
