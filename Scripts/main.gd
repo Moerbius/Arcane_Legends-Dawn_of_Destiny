@@ -6,6 +6,8 @@ extends Node2D
 
 func _ready():
 	Globals.set_hud_visible(true)
+	if GameSave.apply_if_loading(hero):
+		return
 	if Globals.HeroHasLastPosition:
 		hero.position = Globals.HeroLastPosition
 	elif spawn:

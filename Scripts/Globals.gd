@@ -22,6 +22,16 @@ func _ready() -> void:
 
 func _process(_delta) -> void:
 	if Input.is_action_just_pressed("escape"):
+		var closed_modal := false
+		for modal in get_tree().get_nodes_in_group("modal_ui"):
+			if modal.visible:
+				if modal.has_method("close"):
+					modal.close()
+				else:
+					modal.hide()
+				closed_modal = true
+		if closed_modal:
+			return
 		_handle_escape()
 	elif Input.is_action_just_pressed("questlog"):
 		if hud and hud.visible and QuestLog:
@@ -38,6 +48,11 @@ func set_hud_visible(is_visible: bool) -> void:
 func reset_session() -> void:
 	HeroHasLastPosition = false
 	HeroLastPosition = Vector2.ZERO
+	HeroHitPoints = 6
+	HeroMaxHitPoints = 12
+	HeroXP = 0
+	QuestSystem.reset_pool()
+	GameSave.is_loading = false
 	set_hud_visible(false)
 
 
@@ -53,33 +68,39 @@ func _handle_escape() -> void:
 	if current_scene.scene_file_path == MAIN_MENU_SCENE:
 		get_tree().quit(0)
 	else:
+		GameSave.save_to_disk()
 		set_hud_visible(false)
 		get_tree().change_scene_to_file(MAIN_MENU_SCENE)
 
 
 func is_quest_active(_quest: String) -> bool:
 	assert(_quest is String)
-	var pandora_quest: PandoraQuest = Pandora.get_entity(_quest) as PandoraQuest
-	assert(pandora_quest != null)
-	return QuestSystem.is_quest_active(pandora_quest.get_quest())
+	var quest := _quest_from_pandora(_quest)
+	return QuestSystem.is_quest_active(quest)
 
 
 func is_quest_completed(_quest: String) -> bool:
 	assert(_quest is String)
-	var pandora_quest: PandoraQuest = Pandora.get_entity(_quest) as PandoraQuest
-	assert(pandora_quest != null)
-	return QuestSystem.is_quest_completed(pandora_quest.get_quest())
+	var quest := _quest_from_pandora(_quest)
+	return QuestSystem.is_quest_completed(quest)
 
 
 func start_quest(_quest: String) -> Quest:
 	assert(_quest is String)
-	var pandora_quest: PandoraQuest = Pandora.get_entity(_quest) as PandoraQuest
-	assert(pandora_quest != null)
-	return QuestSystem.start_quest(pandora_quest.get_quest())
+	var quest := _quest_from_pandora(_quest)
+	return QuestSystem.start_quest(quest)
 
 
 func complete_quest(_quest: String) -> Quest:
 	assert(_quest is String)
-	var pandora_quest: PandoraQuest = Pandora.get_entity(_quest) as PandoraQuest
+	var quest := _quest_from_pandora(_quest)
+	return QuestSystem.complete_quest(quest)
+
+
+func _quest_from_pandora(quest_id: String) -> Quest:
+	var pandora_quest: PandoraQuest = Pandora.get_entity(quest_id) as PandoraQuest
 	assert(pandora_quest != null)
-	return QuestSystem.complete_quest(pandora_quest.get_quest())
+	var quest: Quest = pandora_quest.get_quest()
+	assert(quest != null)
+	quest.id = int(pandora_quest.get_entity_id())
+	return quest

@@ -6,8 +6,6 @@ extends Node2D
 
 func _process(_delta: float) -> void:
 	if canEnter and Input.is_action_just_pressed("action"):
-		if Dialogic.current_timeline != null:
-			return
 		canEnter = false
 		Globals.save_outdoor_position(heroLastPosition)
 		get_tree().change_scene_to_file("res://Scenes/Inside/HeroHouseInterior.tscn")

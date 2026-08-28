@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://o83rk8jtncll"]
+[gd_scene format=3 uid="uid://o83rk8jtncll"]
 
 [ext_resource type="Texture2D" uid="uid://dwlbn06d3w6g1" path="res://Assets/houseInteriors/clock.png" id="1_04h77"]
 [ext_resource type="Script" uid="uid://cmhbdautgla6" path="res://Scripts/pendulum_clock.gd" id="1_qlgvj"]
+[ext_resource type="FontFile" uid="uid://dgaxsi4lq45qa" path="res://Fonts/Alkhemikal.ttf" id="3_alkhe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h8t2c"]
 atlas = ExtResource("1_04h77")
@@ -30,7 +31,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3o4n3")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 3.0
 }]
@@ -38,14 +39,43 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ev3ss"]
 size = Vector2(20, 11)
 
-[node name="PendulumClock" type="RigidBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xpjuu"]
+size = Vector2(32, 20)
+
+[sub_resource type="LabelSettings" id="LabelSettings_msg"]
+font = ExtResource("3_alkhe")
+font_size = 13
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[node name="PendulumClock" type="RigidBody2D" unique_id=646021434]
 freeze = true
 script = ExtResource("1_qlgvj")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1117390853]
 sprite_frames = SubResource("SpriteFrames_64k0p")
 frame_progress = 0.274823
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=259903313]
 position = Vector2(0, 28.5)
 shape = SubResource("RectangleShape2D_ev3ss")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1029516725]
+
+[node name="PlayerDetection" type="CollisionShape2D" parent="Area2D" unique_id=977938191]
+position = Vector2(0, 42)
+shape = SubResource("RectangleShape2D_xpjuu")
+
+[node name="Message" type="Label" parent="." unique_id=1528214022]
+z_index = 10
+offset_left = -98.0
+offset_top = -64.0
+offset_right = 98.0
+offset_bottom = -48.0
+text = "Something's odd about this clock"
+label_settings = SubResource("LabelSettings_msg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

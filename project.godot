@@ -30,6 +30,8 @@ Dices="*res://Scripts/dices.gd"
 Weapon="*res://Scripts/Weapon.gd"
 QuestSystem="*uid://b77kvbliweux5"
 Dialogic="*uid://ds2q0uclmolvu"
+GameSettings="*res://Scripts/GameSettings.gd"
+GameSave="*res://Scripts/GameSave.gd"
 
 [dialogic]
 
@@ -79,12 +81,13 @@ audio/channel_defaults={
 
 [display]
 
+window/size/mode=3
 window/size/resizable=false
 window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/copilot/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/pandora/plugin.cfg", "res://addons/quest_system/plugin.cfg")
+enabled=PackedStringArray("res://addons/pandora/plugin.cfg", "res://addons/quest_system/plugin.cfg")
 
 [file_customization]
 

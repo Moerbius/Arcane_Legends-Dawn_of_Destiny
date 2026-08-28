@@ -19,11 +19,6 @@ var lastAnimation: String = "WALK_DOWN"
 var currentAnimation: String = "WALK_DOWN"
 var can_move: bool = true
 
-func _ready():
-	Dialogic.timeline_started.connect(_on_dialogue_started)
-	Dialogic.timeline_ended.connect(_on_dialogue_ended)
-
-
 func _physics_process(_delta):
 	if not can_move:
 		velocity = Vector2.ZERO
@@ -57,14 +52,6 @@ func _update_action_prompt() -> void:
 		actionKeyAnim.hide()
 		actionKeyAnim.stop()
 
-
-func _on_dialogue_started() -> void:
-	can_move = false
-	velocity = Vector2.ZERO
-
-
-func _on_dialogue_ended() -> void:
-	can_move = true
 
 func playAnimation(animName: String):
 	lastAnimation = currentAnimation

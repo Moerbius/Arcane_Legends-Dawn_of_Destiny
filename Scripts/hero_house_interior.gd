@@ -6,15 +6,17 @@ extends Node2D
 
 
 func _ready() -> void:
-	hero.position = spawn.position
 	Globals.set_hud_visible(true)
-	Globals.start_quest(PandoraQuests.WELCOME)
+	if GameSave.apply_if_loading(hero):
+		return
+	hero.position = spawn.position
+	if not Globals.is_quest_active(PandoraQuests.WELCOME) \
+			and not Globals.is_quest_completed(PandoraQuests.WELCOME):
+		Globals.start_quest(PandoraQuests.WELCOME)
 
 
 func _process(_delta: float) -> void:
 	if canExit and Input.is_action_just_pressed("action"):
-		if Dialogic.current_timeline != null:
-			return
 		canExit = false
 		get_tree().change_scene_to_file("res://Scenes/main.tscn")
 
